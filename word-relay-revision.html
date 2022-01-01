@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <title>나 끝말잇기예용~</title>
+</head>
+
+<body>
+  <div><span id="order">1</span>번째 참가자</div>
+  <div>제시어: <span id="word"></span></div>
+  <input type="text" >
+  <button>입력</button>
+  <script>
+    const number = parseInt(prompt('몇 명이 참가하냐옹?'), 10);
+    const $button = document.querySelector('button');
+    const $input = document.querySelector('input');
+    const $word = document.querySelector('#word');
+    const $order = document.querySelector('#order');
+    let word;
+    let newWord;
+    const onClickButton = () => {
+      if (!word || word[word.length - 1] === newWord[0]) {
+        word = newWord;
+        $word.textContent = word;
+        const order = parseInt($order.textContent);
+        if (order + 1 > number) {
+          $order.textContent = 1;
+        } else {
+          $order.textContent = order + 1;
+        }
+      } else {
+        alert('틀렸다옹!!');
+      }
+      $input.value = '';
+      $input.focus();
+    };
+    const onInput = (event) => {
+      newWord = event.target.value;
+    };
+    $button.addEventListener('click', onClickButton);
+    $input.addEventListener('input', onInput);
+  </script>
+</body>
+
+</html>
+
