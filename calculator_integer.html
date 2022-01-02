@@ -9,7 +9,7 @@
 
 <body>
   <input readonly id="operator">
-  <input readonly type="number" id="result">
+  <input readonly type="text" id="result">
   <div class="row">
     <button id="num-7">7</button>
     <button id="num-8">8</button>
@@ -41,11 +41,13 @@
     const $operator = document.querySelector('#operator');
     const $result = document.querySelector('#result');
     const onClickNumber = (event) => {
-      if (!operator) {
+      if (!operator) { // 비어 있다
         numOne += event.target.textContent;
         $result.value += event.target.textContent;
+        numOne = $result.value;
         return;
       }
+      // 비어 있지 않다
       if (!numTwo) {
         $result.value = '';
       }
@@ -63,29 +65,13 @@
     document.querySelector('#num-8').addEventListener('click', onClickNumber);
     document.querySelector('#num-9').addEventListener('click', onClickNumber);
     const onClickOperator = (op) => () => {
-      if (numTwo) {
-        switch (operator) {
-          case '+':
-            $result.value = parseInt(numOne) + parseInt(numTwo); // 덧셈은 parseInt 필요
-            break;
-          case '-':
-            $result.value = parseInt(numOne) - parseInt(numTwo); // 뺄셈, 나눗셈, 곱셈은 parseInt 불필요 (헷갈리면 써도 됨)
-            break;
-          case '/':
-            $result.value = parseInt(numOne) / parseInt(numTwo); // 뺄셈, 나눗셈, 곱셈은 parseInt 불필요 (헷갈리면 써도 됨)
-            break;
-          case '*':
-            $result.value = parseInt(numOne) * parseInt(numTwo); // 뺄셈, 나눗셈, 곱셈은 parseInt 불필요 (헷갈리면 써도 됨)
-            break;
-          default:
-            break;
+      if (numOne || op === '-') {
+        if (numOne) {
+          operator = op;
+          $operator.value = op;
+        } else {
+          $result.value = '-';
         }
-        numOne = $result.value;
-        numTwo = '';
-      }
-      if (numOne) {
-        operator = op;
-        $operator.value = op;
       } else {
         alert('숫자를 먼저 입력해 주세요!');
       }
