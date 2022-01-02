@@ -65,39 +65,39 @@
     document.querySelector('#num-8').addEventListener('click', onClickNumber);
     document.querySelector('#num-9').addEventListener('click', onClickNumber);
     const onClickOperator = (op) => () => {
-      if (numOne || numTwo || op === '-') {
-        if (numOne) {
-          if (numTwo) {
-            switch (operator) {
-              case '+':
-                $result.value = parseInt(numOne) + parseInt(numTwo); // 덧셈은 parseInt 필요
-                break;
-              case '-':
-                $result.value = parseInt(numOne) - parseInt(numTwo); // 뺄셈, 나눗셈, 곱셈은 parseInt 불필요 (헷갈리면 써도 됨)
-                break;
-              case '/':
-                $result.value = parseInt(numOne) / parseInt(numTwo); // 뺄셈, 나눗셈, 곱셈은 parseInt 불필요 (헷갈리면 써도 됨)
-                break;
-              case '*':
-                $result.value = parseInt(numOne) * parseInt(numTwo); // 뺄셈, 나눗셈, 곱셈은 parseInt 불필요 (헷갈리면 써도 됨)
-                break;
-              default:
-                break;
-            }
-            $operator.value = op;
-            numOne = $result.value;
-            operator = op;
-            numTwo = '';
-          } else {
-            operator = op;
-            $operator.value = op;
-          }
-        } else {
-          $result.value = '-';
-        }
-      } else {
+      if (!numOne && !numTwo && op !== '-') {
         alert('숫자를 먼저 입력해 주세요!');
+        return;
       }
+      if (!numOne) {
+        $result.value = '-';
+        return;
+      }
+      if (!numTwo) {
+        operator = op;
+        $operator.value = op;
+        return;
+      }
+      switch (operator) {
+        case '+':
+          $result.value = parseInt(numOne) + parseInt(numTwo); // 덧셈은 parseInt 필요
+          break;
+        case '-':
+          $result.value = parseInt(numOne) - parseInt(numTwo); // 뺄셈, 나눗셈, 곱셈은 parseInt 불필요 (헷갈리면 써도 됨)
+          break;
+        case '/':
+          $result.value = parseInt(numOne) / parseInt(numTwo); // 뺄셈, 나눗셈, 곱셈은 parseInt 불필요 (헷갈리면 써도 됨)
+          break;
+        case '*':
+          $result.value = parseInt(numOne) * parseInt(numTwo); // 뺄셈, 나눗셈, 곱셈은 parseInt 불필요 (헷갈리면 써도 됨)
+          break;
+        default:
+          break;
+      }
+      $operator.value = op;
+      numOne = $result.value;
+      operator = op;
+      numTwo = '';
     };
     document.querySelector('#plus').addEventListener('click', onClickOperator('+'));
     document.querySelector('#minus').addEventListener('click', onClickOperator('-'));
