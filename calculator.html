@@ -26,7 +26,7 @@
     <button id="num-1">1</button>
     <button id="num-2">2</button>
     <button id="num-3">3</button>
-    <button id="divide">/</button>
+    <button id="divide">÷</button>
   </div>
   <div class="row">
     <button id="clear">C</button>
@@ -65,10 +65,33 @@
     document.querySelector('#num-8').addEventListener('click', onClickNumber);
     document.querySelector('#num-9').addEventListener('click', onClickNumber);
     const onClickOperator = (op) => () => {
-      if (numOne || op === '-') {
+      if (numOne || numTwo || op === '-') {
         if (numOne) {
-          operator = op;
-          $operator.value = op;
+          if (numTwo) {
+            switch (operator) {
+              case '+':
+                $result.value = parseInt(numOne) + parseInt(numTwo); // 덧셈은 parseInt 필요
+                break;
+              case '-':
+                $result.value = parseInt(numOne) - parseInt(numTwo); // 뺄셈, 나눗셈, 곱셈은 parseInt 불필요 (헷갈리면 써도 됨)
+                break;
+              case '/':
+                $result.value = parseInt(numOne) / parseInt(numTwo); // 뺄셈, 나눗셈, 곱셈은 parseInt 불필요 (헷갈리면 써도 됨)
+                break;
+              case '*':
+                $result.value = parseInt(numOne) * parseInt(numTwo); // 뺄셈, 나눗셈, 곱셈은 parseInt 불필요 (헷갈리면 써도 됨)
+                break;
+              default:
+                break;
+            }
+            $operator.value = op;
+            numOne = $result.value;
+            operator = op;
+            numTwo = '';
+          } else {
+            operator = op;
+            $operator.value = op;
+          }
         } else {
           $result.value = '-';
         }
