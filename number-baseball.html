@@ -47,8 +47,9 @@
       $input.value = ''; // 칸 비워두기
       if (checkInput(value)) {
         // 입력값 문제 없음
+        tries.push(value);
       } else {
-        // alert의 return값은 undefined. 만약 에러가 있어서 undefined가 if문 안에 들어가면 false가 됨.
+        // 입력값 에러 있음; alert의 return값은 undefined. 만약 에러가 있어서 undefined가 if문 안에 들어가면 false가 됨.
       }
     });
   </script>
