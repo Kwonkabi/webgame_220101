@@ -29,6 +29,16 @@
       numbers.splice(index, 1); // 뽑은 수는 지워주기
     }
     console.log(answer);
+
+    const tries = [];
+    function checkInput(input) {} // 검사하는 코드
+
+    $form.addEventListener('submit', (event) => {
+      event.preventDefault();  // 기본동작 막기 : form의 기본동작이 새로고침이기 때문
+      const value = $input.value; // $input.value 대신 event.target[0].value도 가능
+      $input.value = '';
+      const valid = checkInput(value);
+    });
   </script>
 </body>
 
