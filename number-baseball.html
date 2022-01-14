@@ -31,7 +31,18 @@
     console.log(answer);
 
     const tries = [];
-    function checkInput(input) {} // 검사하는 코드
+    function checkInput(input) {
+      if (input.length !== 4) { // 길이가 4가 아닌가
+        return alert('4자리 숫자를 입력해 주세요.');
+      }
+      if (new Set(input).size !== 4) { // 중복된 숫자가 있는가; new Set은 중복된 숫자를 알아서 지워줌. length가 아닌 size 사용.
+        return alert('중복되지 않게 입력해 주세요.');
+      }
+      if (tries.includes(input)) { // 이미 시도한 값인가; 배열에 이미 포함되어 있는지
+        return alert('이미 시도한 값입니다.')
+      }
+      return true;
+    } // 검사하는 코드
 
     $form.addEventListener('submit', (event) => {
       event.preventDefault();  // 기본동작 막기 : form의 기본동작이 새로고침이기 때문
