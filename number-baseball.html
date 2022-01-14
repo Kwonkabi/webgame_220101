@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
+
 <head>
   <meta charset="UTF-8">
   <title>숫자야구</title>
 </head>
+
 <body>
   <form id="form">
     <input type="text" id="input">
@@ -14,52 +16,7 @@
     const $input = document.querySelector('#input');
     const $form = document.querySelector('#form');
     const $logs = document.querySelector('#logs');
-
-    const numbers = []; // [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    for (let n = 0; n < 9; n+= 1) {
-      numbers.push(n + 1);
-    }
-    const answer = [];
-    for (let n = 0; n < 4; n += 1) {  // 네 번 반복
-      const index = Math.floor(Math.random() * (numbers.length - n)); // 인덱스 0~8, splice 할 때마다 element 개수 줄어들기 때문에 numbers.length를 곱해줘야 함. 상수 사용을 줄이기 위해 9가 아닌 numbers.length를 사용하는 것이 좋음.
-      answer.push(numbers[index]);
-      numbers.splice(index, 1); // 뽑은 수를 지운다
-    }
-    console.log(answer);
-
-    const tries = [];
-    function checkInput(input) { // 검사하는 코드
-      if (input.length !== 4) { // 길이가 4가 아닌가
-        return alert('4자리 숫자를 입력해 주세요!')
-      }
-      if (new Set(input).size !== 4) { // 중복된 숫자가 있는가; new Set은 중복을 제거함, length 대신 size 사용
-        return alert('중복되지 않게 입력해 주세요!')
-      }
-      if (tries.includes(input)) { // 이미 시도한 값은 아닌가; include는 배열에 그 값이 들어 있는지
-        return alert('이미 시도한 값입니다.');
-      }
-      return true;
-    } 
-    
-    $form.addEventListener('submit', (event) => {
-      event.preventDefault(); // 기본동작(form의 기본동작은 새로고침) 막기
-      const value = $input.value; // 변수에 저장; $input.value 대신 event.target[0].value도 사용 가능
-      $input.value = ''; // 칸 비워두기
-      if (checkInput(value)) {
-        // 입력값 문제 없음
-        tries.push(value);
-      } else {
-        // 입력값 에러 있음; alert의 return값은 undefined. 만약 에러가 있어서 undefined가 if문 안에 들어가면 false가 됨.
-      }
-    });
   </script>
 </body>
-</html>
 
-<!-- 
-  1~9 사이의 랜덤 자연수 뽑기
-  0 <= Math.random() < 1
-  0 <= Math.random() * 9 < 9
-  1 <= Math.random() * 9 + 1 < 10
-  Math.floor(Math.random() * 9 + 1)
- --> 
+</html>
