@@ -73,8 +73,8 @@
           }
         }
       }
-      $logs.append(`${value}: ${strike} 스트라이크 ${ball} 볼`, document.createElement('br'));
-      tries.push(value);
+      $logs.append(`${value}: ${strike} 스트라이크 ${ball} 볼`, document.createElement('br')); // appendChild 메서드는 하나의 텍스트나 태그만 추가할 수 있지만 append는 여러 개 가능
+      tries.push(value); // tries 배열 안에 입력값 저장 (시도횟수 +1)
     });
   </script>
 </body>
