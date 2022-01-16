@@ -46,18 +46,18 @@
 
     $form.addEventListener('submit', (event) => {
       event.preventDefault();  // 기본동작 막기 : form의 기본동작이 새로고침이기 때문
-      const value = $input.value; // $input.value 대신 event.target[0].value도 가능
-      $input.value = '';
-      const valid = checkInput(value);
-      if (!valid) return;
-      // 입력값 문제 없음
+      const value = $input.value; // 입력된 값을 value 변수에 지정; $input.value 대신 event.target[0].value도 가능
+      $input.value = ''; // 입력된 값을 보이지 않게 함
+      const valid = checkInput(value); // 입력된 값을 검증한 결과인 true나 false를 valid 변수에 지정
+      if (!valid) return; // valid가 false일 때(checkInput함수에서 alert가 뜬 경우)
+      // valid가 true일 때(입력값 문제 없음)
       if (answer.join('') === value) { // ex. [3, 1, 4, 6] -> '3146'
         $logs.textContent = '홈런!'
         return;
       }
       if (tries.length >= 9) { // 10번째 시도 상황에서 tries.length가 9이기 때문. 
-        const message = document.createTextNode(`패배! 정답은 ${answer.join('')}`);
-        $logs.appendChild(message);
+        const message = document.createTextNode(`패배! 정답은 ${answer.join('')}`); // answer.join() 하게 되면 ex. '3146'이 아닌 '3,1,4,6'이 나옴
+        $logs.appendChild(message); // 재사용하지 않을 거면 message 변수로 빼지 않아도 됨: $logs.appendChild(document.createTextNode(`패배! 정답은 ${answer.join('')}`));
         return;
       }
       // 몇 스트라이크 몇 볼인지 검사
