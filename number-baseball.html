@@ -64,7 +64,7 @@
       let strike = 0;
       let ball = 0;
       for (let i = 0; i < answer.length; i++) {
-        const index = value.indexOf(answer[i]);
+        const index = value.indexOf(answer[i]); // 탐색하려는 문자열이 존재하지 않는다면 -1을 반환
         if (index > -1) {
           if (index === i) {
             strike += 1;
