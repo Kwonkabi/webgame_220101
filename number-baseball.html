@@ -73,6 +73,16 @@
           }
         }
       }
+      // answer.forEach((number, aIndex) => { // 위의 for문 대신 forEach 메서드 사용한 경우
+      //   const index = value.indexOf(String(number));
+      //   if (index > -1) { // 일치하는 숫자 발견
+      //      if (index === aIndex) { // 자릿수도 같음
+      //        strike += 1;
+      //      } else { // 숫자만 같음
+      //        ball += 1;
+      //      }
+      //    }
+      // });
       $logs.append(`${value}: ${strike} 스트라이크 ${ball} 볼`, document.createElement('br')); // appendChild 메서드는 하나의 텍스트나 태그만 추가할 수 있지만 append는 여러 개 가능
       tries.push(value); // tries 배열 안에 입력값 저장 (시도횟수 +1)
     });
