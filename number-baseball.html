@@ -8,7 +8,7 @@
 
 <body>
   <!-- 최근 html 트렌드 : input 태그를 form 태그로 감싼다 -->
-  <form id="form"> 
+  <form id="form">
     <input type="text" id="input">
     <button>확인</button>
   </form>
@@ -44,6 +44,7 @@
       return true;
     } // 검사하는 코드
 
+    let out = 0;
     $form.addEventListener('submit', (event) => {
       event.preventDefault();  // 기본동작 막기 : form의 기본동작이 새로고침이기 때문
       const value = $input.value; // 입력된 값을 value 변수에 지정; $input.value 대신 event.target[0].value도 가능
@@ -73,29 +74,20 @@
           }
         }
       }
-      // answer.forEach((number, aIndex) => { // 위의 for문 대신 forEach 메서드 사용한 경우
-      //   const index = value.indexOf(String(number));
-      //   if (index > -1) { // 일치하는 숫자 발견
-      //      if (index === aIndex) { // 자릿수도 같음
-      //        strike += 1;
-      //      } else { // 숫자만 같음
-      //        ball += 1;
-      //      }
-      //    }
-      // });
-      $logs.append(`${value}: ${strike} 스트라이크 ${ball} 볼`, document.createElement('br')); // appendChild 메서드는 하나의 텍스트나 태그만 추가할 수 있지만 append는 여러 개 가능
-      tries.push(value); // tries 배열 안에 입력값 저장 (시도횟수 +1)
+      if (strike === 0 && ball === 0) {
+        out++; 
+        $logs.append(`${value}:아웃`, document.createElement('br'));
+      } else {
+        $logs.append(`${value}: ${strike} 스트라이크 ${ball} 볼`, document.createElement('br'));
+      }
+      if (out === 3) {
+        const message = document.createTextNode(`패배! 정답은 ${answer.join('')}`);
+        $logs.appendChild(message);
+        return;
+      }
+      tries.push(value);
     });
   </script>
 </body>
-
-<!-- 
-Math.random 함수를 이용하여 한 자리수 무작위 자연수 뽑기
-0 <= Math.random() < 1
-0 <= Math.random() * 9 < 9
-1 <= Math.random() * 9 + 1 < 10
-(소수를 정수로 만들어 주기; Math.ceil이나 Math.round를 사용하면 10이 나올 수 있으므로 Math.floor 사용)
-Math.floor(Math.random() * 9 + 1)
--->
 
 </html>
