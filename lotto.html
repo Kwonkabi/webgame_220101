@@ -22,7 +22,7 @@
     <div id="bonus">보너스: </div>
     <script>
         const candidate = Array(45).fill().map((v, i) => i + 1); // 1 ~ 45까지 뽑기
-        const shuffle = [];
+        const shuffle = []; // 빈 배열에 랜덤으로 정렬하기
         while (candidate.length > 0) {
             const random = Math.floor(Math.random() * candidate.length); // 무작위 인덱스 뽑기
             const spliceArray = candidate.splice(random, 1); // 뽑은 값은 배열에 들어 있음
