@@ -29,9 +29,9 @@
             const value = spliceArray[0]; // 배열에 들어 있는 값을 꺼내서
             shuffle.push(value); // shuffle 배열에 넣기
         }
-        console.log(shuffle);
-        const winBalls = shuffle.slice(0, 6).sort((a, b) => a - b); // a - b : 오름차순, b - a : 내림차순
-        const bonus = shuffle[6];
+        console.log(shuffle); // 공 45개가 섞여서 들어 있음
+        const winBalls = shuffle.slice(0, 6).sort((a, b) => a - b); // 섞여 있는 45개 중에서 앞에서 6개 자르고 정렬(a - b : 오름차순, b - a : 내림차순)
+        const bonus = shuffle[6]; // 7번째 공 가져오기
         console.log(winBalls, bonus);
     </script>
 </body>
