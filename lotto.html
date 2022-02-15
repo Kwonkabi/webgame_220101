@@ -30,7 +30,7 @@
             shuffle.push(value); // shuffle 배열에 넣기
         }
         console.log(shuffle); // 공 45개가 섞여서 들어 있음
-        const winBalls = shuffle.slice(0, 6).sort((a, b) => a - b); // 섞여 있는 45개 중에서 앞에서 6개 자르고 정렬(a - b : 오름차순, b - a : 내림차순)
+        const winBalls = shuffle.slice(0, 6).sort((a, b) => a - b); // 섞여 있는 45개 중에서 앞에서 6개 자르고 정렬(a - b : 오름차순, b - a : 내림차순), map과 slice는 원본에 변화 없음
         const bonus = shuffle[6]; // 7번째 공 가져오기
         console.log(winBalls, bonus);
     </script>
