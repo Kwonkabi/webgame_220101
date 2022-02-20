@@ -33,6 +33,15 @@
         const winBalls = shuffle.slice(0, 6).sort((a, b) => a - b); // 섞여 있는 45개 중에서 앞에서 6개 자르고 정렬(a - b : 오름차순, b - a : 내림차순), map과 slice는 원본에 변화 없음 (slice와 splice 차이: https://stackoverflow.com/questions/37601282/javascript-array-splice-vs-slice), array가 아닌 array.slice에 sort하는 이유: sort는 원본에 영향을 주기 때문에, array의 복사본을 사용하는 것.
         const bonus = shuffle[6]; // 7번째 공 가져오기
         console.log(winBalls, bonus);
+
+        console.log(winBalls, bonus);
+        const $result = document.querySelector('#result');
+        setTimeout(() => {
+            const $ball = document.createElement('div');
+            $ball.className = 'ball';
+            $ball.textContent = winBalls[0];
+            $result.appendChild($ball);
+        }, 1000);
     </script>
 </body>
 </html>
