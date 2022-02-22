@@ -36,12 +36,12 @@
 
         console.log(winBalls, bonus);
         const $result = document.querySelector('#result');
-        setTimeout(() => {
+        setTimeout(() => { // 지정된 시간 뒤 실행되는 함수
             const $ball = document.createElement('div');
             $ball.className = 'ball';
             $ball.textContent = winBalls[0];
             $result.appendChild($ball);
-        }, 1000);
+        }, 1000); // 밀리초 * 1000
     </script>
 </body>
 </html>
