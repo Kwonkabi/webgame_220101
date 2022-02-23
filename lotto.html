@@ -35,12 +35,36 @@
         console.log(winBalls, bonus);
 
         const $result = document.querySelector('#result');
-        setTimeout(() => { // 지정된 시간 뒤 실행되는 함수
+        const $bonus = document.querySelector('#bonus');
+
+        const showBall = (number, $target) => {
             const $ball = document.createElement('div');
             $ball.className = 'ball';
-            $ball.textContent = winBalls[0];
-            $result.appendChild($ball);
+            $ball.textContent = number;
+            $target.appendChild($ball);
+        };
+
+        setTimeout(() => { // 지정된 시간 뒤 실행되는 함수
+            showBall(winBalls[0], $result);
         }, 1000); // 밀리초 * 1000
+        setTimeout(() => {
+            showBall(winBalls[1], $result);
+        }, 2000);
+        setTimeout(() => {
+            showBall(winBalls[2], $result);
+        }, 3000);
+        setTimeout(() => {
+            showBall(winBalls[3], $result);
+        }, 4000);
+        setTimeout(() => {
+            showBall(winBalls[4], $result);
+        }, 5000);
+        setTimeout(() => {
+            showBall(winBalls[5], $result);
+        }, 6000);
+        setTimeout(() => {
+            showBall(bonus, $bonus);
+        }, 7000);
     </script>
 </body>
 </html>
