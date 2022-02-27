@@ -24,6 +24,9 @@
     const $rock = document.querySelector('#rock');
     const $scissors = document.querySelector('#scissors');
     const $paper = document.querySelector('#paper');
+    const IMG_URL = './rsp.png'; // ./는 현재 폴더를 의미
+    $computer.style.background = `url(${IMG_URL}) 0 0`;
+    $computer.style.backgroundSize = 'auto 200px'; // 높이 200px에 맞춰서 자동 너비 조정
   </script>
 </body>
 </html>
